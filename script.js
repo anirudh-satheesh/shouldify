@@ -131,7 +131,7 @@ async function askAI(question) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ prompt: question })
+    body: JSON.stringify({ question }) // <-- Fix: use 'question' key
   });
 
   const data = await response.json();
