@@ -37,7 +37,7 @@ function decide() {
     return;
   }
 
-  document.getElementById('captureArea').classList.remove('hidden'); // <-- Move here
+  document.getElementById('captureArea').classList.remove('hidden'); 
 
   const pool = answers[mode];
   const answer = pool[Math.floor(Math.random() * pool.length)];
@@ -84,7 +84,7 @@ function reset() {
   againBtn.classList.add("hidden");
   shareEl.classList.add("hidden");
   resultEl.classList.remove("ai-response");
-  document.getElementById('captureArea').classList.add('hidden'); // <-- Hide captureArea on reset
+  document.getElementById('captureArea').classList.add('hidden'); 
 }
 
 function downloadImage() {
@@ -92,16 +92,13 @@ function downloadImage() {
   const resultCard = document.getElementById('resultCard');
   const watermark = document.getElementById('watermark');
 
-  // Save original styles
   const originalCaptureBg = captureArea.style.background;
   const originalColor = captureArea.style.color;
   const originalCardBg = resultCard.style.background;
   const originalDisplay = watermark.style.display;
 
-  // Ensure watermark is visible before capture
   watermark.style.display = 'block';
 
-  // Optional: Set background to solid for better contrast in the image
   captureArea.style.background = "#2d0260";
   captureArea.style.color = "#ffffff";
   resultCard.style.background = "#4f46e5";
@@ -110,7 +107,6 @@ function downloadImage() {
     backgroundColor: null,
     scale: 2
   }).then(canvas => {
-    // Restore original styles
     captureArea.style.background = originalCaptureBg;
     captureArea.style.color = originalColor;
     resultCard.style.background = originalCardBg;
@@ -131,7 +127,7 @@ async function askAI(question) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ question }) // <-- Fix: use 'question' key
+    body: JSON.stringify({ question }) 
   });
 
   const data = await response.json();
@@ -156,7 +152,7 @@ async function decideWithAI() {
   fortuneEl.innerHTML = "";
   againBtn.classList.add("hidden");
   shareEl.classList.add("hidden");
-  document.getElementById('captureArea').classList.remove('hidden'); // <-- Move here
+  document.getElementById('captureArea').classList.remove('hidden'); 
 
   try {
     const aiAnswer = await askAI(question);

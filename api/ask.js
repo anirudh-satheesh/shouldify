@@ -26,6 +26,10 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: "mistralai/mistral-7b-instruct",
         messages: [
+          {
+            role: "system",
+            content: "Always answer the user's question starting with 'Yes' or 'No', then provide a brief explanation."
+          },
           { role: "user", content: question }
         ]
       })
